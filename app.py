@@ -4,12 +4,14 @@ from tools import tools, handle_tool_calls
 from styles import CSS, JS, EXAMPLES
 from dotenv import load_dotenv
 import gradio as gr
+import os
 
 load_dotenv(override=True)
 
-MODEL_NAME = "gpt-5.4-mini"
+MODEL_NAME = "gemini-3.5-flash-lite"
+openai_api_key = os.getenv('GOOGLE_API_KEY')
 
-openai = OpenAI()
+openai = OpenAI(api_key=openai_api_key, base_url= "https://generativelanguage.googleapis.com/v1beta/openai/")
 
 system = [{"role": "system", "content": TWIN_SYSTEM_PROMPT}]
 
